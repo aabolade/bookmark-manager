@@ -1,0 +1,26 @@
+RSpec.feature "bubbles" do
+  scenario "bubbles" do
+    visit '/links'
+    click_button('add_link')
+    fill_in('title', :with => 'Facebook')
+    fill_in('url', :with => 'www.facebook.com')
+    fill_in('tag', :with => 'social')
+    click_button('submit')
+
+    visit '/links'
+    click_button('add_link')
+    fill_in('title', :with => 'Bubble News')
+    fill_in('url', :with => 'www.bbc.co.uk/bubbles')
+    fill_in('tag', :with => 'bubbles')
+    click_button('submit')
+
+
+    visit "/tags/bubbles"
+
+    expect(page).not_to have_content('Facebook')
+    expect(page).to have_content('Bubble News')
+
+  end
+
+
+end
