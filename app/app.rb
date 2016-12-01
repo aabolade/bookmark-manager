@@ -25,8 +25,10 @@ class BookmarkManager < Sinatra::Base
     erb :new
   end
 
-  get '/tags/bubbles' do
-    'Bubble News'
+  get '/tags/:name' do
+    tag = Tag.first(tag: params[:name])
+    @links = tag ? tag.links : []
+    erb :filtered
   end
 
   # start the server if ruby file executed directly
