@@ -13,3 +13,18 @@ def wrong_sign_up
   fill_in 'confirm_password', :with => "pssword"
   click_button('sign-up')
 end
+
+def empty_email_sign_up
+  visit('/users/new')
+  fill_in 'password', :with => "password"
+  fill_in 'confirm_password', :with => "password"
+  click_button('sign-up')
+end
+
+def invalid_email_sign_in
+  visit('/users/new')
+  fill_in 'email', :with => "invalid@email"
+  fill_in 'password', :with => "password"
+  fill_in 'confirm_password', :with => "password"
+  click_button('sign-up')
+end
