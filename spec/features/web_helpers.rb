@@ -28,3 +28,8 @@ def invalid_email_sign_in
   fill_in 'confirm_password', :with => "password"
   click_button('sign-up')
 end
+
+def duplicate_email_sign_up
+  sign_up
+  sign_up
+end
